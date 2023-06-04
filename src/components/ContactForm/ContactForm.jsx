@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { FormStyled } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactListSlice';
@@ -6,9 +5,7 @@ import { nanoid } from '@reduxjs/toolkit';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-
-  const getContacts = state => state.contacts;
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(state => state.contacts);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -56,11 +53,4 @@ export const ContactForm = () => {
       <button type="submit">add contact</button>
     </FormStyled>
   );
-};
-
-ContactForm.propTypes = {
-  contactsProp: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.string.isRequired)
-  ),
-  onSubmitProp: PropTypes.func,
 };
