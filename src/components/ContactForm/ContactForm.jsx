@@ -5,8 +5,7 @@ import { nanoid } from '@reduxjs/toolkit';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
-
+  const contacts = useSelector(state => state.contacts.contacts);
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -15,10 +14,10 @@ export const ContactForm = () => {
       name: e.target[0].value,
       number: e.target[1].value,
     };
+
     if (contacts.map(contact => contact.name).includes(contact.name)) {
       return alert(`${contact.name} is already in contacts`);
     }
-
     dispatch(addContact(contact));
     e.target.reset();
     [...e.currentTarget].map(item => item.nodeName === 'INPUT' && item.blur());
