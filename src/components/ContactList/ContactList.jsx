@@ -28,7 +28,7 @@ export const ContactList = () => {
           <button
             id={contact.id}
             type="button"
-            onClick={() => dispatch(handleDelete(contact.id))}
+            onClick={() => handleDelete(contact.id)}
           >
             delete
           </button>
